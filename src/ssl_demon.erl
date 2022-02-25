@@ -54,8 +54,7 @@ start_server() ->
         {ok, LSock} = ssl:listen(Port, LOpts),
         %% Accept first connection
         {ok, CSock0} = ssl:transport_accept(LSock),
-        {ok, _} = ssl:handshake(CSock0),
-        ssl:stop().
+        {ok, _} = ssl:handshake(CSock0).
         %% Accept second connection
 %%        {ok, CSock1} = ssl:transport_accept(LSock),
 %%        {ok, Sock} = ssl:handshake(CSock1),
@@ -63,7 +62,6 @@ start_server() ->
 start_client() ->
   application:load(ssl),
 	{ok, _} = application:ensure_all_started(ssl),
-  erlang:spawn(fun() -> ssl_demon:start_server(), ssl_demon:recv() end),
 	Port = 11029,
 	COpts1 = [
     {cacertfile, ?CA_CERT},
@@ -93,12 +91,10 @@ start_usr_server() ->
   {ok, LSock} = ssl:listen(Port, LOpts),
   %% Accept first connection
   {ok, CSock0} = ssl:transport_accept(LSock),
-  {ok, _} = ssl:handshake(CSock0),
-  ssl:stop().
+  {ok, _} = ssl:handshake(CSock0).
 start_usr_cert() ->
   application:load(ssl),
   {ok, _} = application:ensure_all_started(ssl),
-  erlang:spawn(fun() -> ssl_demon:start_usr_server(), ssl_demon:recv() end),
   Port = 11030,
   COpts1 = [
   %% 信任的根证书
