@@ -15,7 +15,7 @@
 %%% See the License for the specific language governing permissions and
 %%% limitations under the License.
 %%%
-   
+
 %%% @doc
 %%%
 %%% @end
@@ -31,8 +31,8 @@
 -export([start/2, stop/1]).
 
 start(_StartType, _StartArgs) ->
-    erlang:spawn(fun() -> ssl_demon:start_usr_server(), ssl_demon:recv() end),
-    erlang:spawn(fun() -> ssl_demon:start_server(), ssl_demon:recv() end),
+    erlang:spawn(fun() -> ssl_demon:start_usr_server() end),
+    erlang:spawn(fun() -> ssl_demon:start_server() end),
     ssl_demon_sup:start_link().
 
 stop(_State) ->

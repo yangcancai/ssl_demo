@@ -1,17 +1,11 @@
-{application, ssl_demon,
+{application,
+ ssl_demon,
  [{description, "An OTP application"},
   {vsn, "0.1.0"},
   {registered, []},
   {mod, {ssl_demon_app, []}},
-  {applications,
-   [kernel,
-    stdlib,
-    ssl
-   ]},
-  {env,[]},
+  {applications, [kernel, stdlib, ssl]},
+  {env, []},
   {modules, []},
-
   {licenses, ["Apache 2.0"]},
-  {links, []}
- ]}.
-
+  {links, []}]}.
